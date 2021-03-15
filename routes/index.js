@@ -5,7 +5,7 @@ const ProductController = require('../controllers/ProductController.js');
 const { authenticate, authorize } = require('../middlewares/auth.js');
 
 router.get('/', (req, res) => {
-    res.send('welcome to silver&gold good people !');
+    res.send('welcome to silver&gold app good people !');
 });
 
 //User Controller
