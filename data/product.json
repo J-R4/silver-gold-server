@@ -1,0 +1,128 @@
+[
+    {
+        "name": "MARI Silver Ring",
+        "image_url": "https://silverandgold.s3-ap-southeast-1.amazonaws.com/1.jpeg",
+        "price": "10000000",
+        "stock": 3
+    },
+    {
+        "name": "ORENT Gold Watch",
+        "image_url": "https://silverandgold.s3-ap-southeast-1.amazonaws.com/2.jpeg",
+        "price": "90000000",
+        "stock": 2
+    },
+    {
+        "name": "ROUND Gold Necklace",
+        "image_url": "https://silverandgold.s3-ap-southeast-1.amazonaws.com/3.jpeg",
+        "price": "77000000",
+        "stock": 3
+    },
+    {
+        "name": "TANGLED Gold Ring",
+        "image_url": "https://silverandgold.s3-ap-southeast-1.amazonaws.com/4.jpeg",
+        "price": "97000000",
+        "stock": 1
+    },
+    {
+        "name": "PURE Silver Ring",
+        "image_url": "https://silverandgold.s3-ap-southeast-1.amazonaws.com/5.jpeg",
+        "price": "88000000",
+        "stock": 1
+    },
+    {
+        "name": "TRIAD Silver-Gold Ring",
+        "image_url": "https://silverandgold.s3-ap-southeast-1.amazonaws.com/6.jpeg",
+        "price": "330000000",
+        "stock": 1
+    },
+    {
+        "name": "COMBIA Gold Watch",
+        "image_url": "https://silverandgold.s3-ap-southeast-1.amazonaws.com/7.jpeg",
+        "price": "404000000",
+        "stock": 1
+    },
+    {
+        "name": "ROLE Silver Watch",
+        "image_url": "https://silverandgold.s3-ap-southeast-1.amazonaws.com/8.jpeg",
+        "price": "333000000",
+        "stock": 1
+    },
+    {
+        "name": "ALPHA Silver Watch",
+        "image_url": "https://silverandgold.s3-ap-southeast-1.amazonaws.com/9.jpeg",
+        "price": "111000000",
+        "stock": 1
+    },
+    {
+        "name": "NEX Watch",
+        "image_url": "https://silverandgold.s3-ap-southeast-1.amazonaws.com/10.jpeg",
+        "price": "55000000",
+        "stock": 1
+    },
+    {
+        "name": "GB Card and Dice",
+        "image_url": "https://silverandgold.s3-ap-southeast-1.amazonaws.com/11.jpeg",
+        "price": "66000000",
+        "stock": 1
+    },
+    {
+        "name": "MAHESTIK Gold Necklace",
+        "image_url": "https://silverandgold.s3-ap-southeast-1.amazonaws.com/12.jpeg",
+        "price": "99000000",
+        "stock": 1
+    },
+    {
+        "name": "SIMP Silver-Gold Watch",
+        "image_url": "https://silverandgold.s3-ap-southeast-1.amazonaws.com/13.jpeg",
+        "price": "222000000",
+        "stock": 1
+    },
+    {
+        "name": "GLIMS Silver-Diamond Ring",
+        "image_url": "https://silverandgold.s3-ap-southeast-1.amazonaws.com/14.jpeg",
+        "price": "555000000",
+        "stock": 1
+    },
+    {
+        "name": "QUARZ Silver-Gold Watch",
+        "image_url": "https://silverandgold.s3-ap-southeast-1.amazonaws.com/15.jpeg",
+        "price": "848000000",
+        "stock": 1
+    },
+    {
+        "name": "GOLD BAR",
+        "image_url": "https://silverandgold.s3-ap-southeast-1.amazonaws.com/16.jpeg",
+        "price": "909000000",
+        "stock": 1
+    },
+    {
+        "name": "ALLR Silver-Diamond Ring",
+        "image_url": "https://silverandgold.s3-ap-southeast-1.amazonaws.com/17.jpeg",
+        "price": "646000000",
+        "stock": 1
+    },
+    {
+        "name": "BLOOM Silver-Diamond Ring",
+        "image_url": "https://silverandgold.s3-ap-southeast-1.amazonaws.com/18.jpeg",
+        "price": "888000000",
+        "stock": 1
+    },
+    {
+        "name": "FLOWER Silver-Diamond Ring",
+        "image_url": "https://silverandgold.s3-ap-southeast-1.amazonaws.com/19.jpeg",
+        "price": "222000000",
+        "stock": 1
+    },
+    {
+        "name": "GOLD BAR LANDSCAPE",
+        "image_url": "https://silverandgold.s3-ap-southeast-1.amazonaws.com/20.jpeg",
+        "price": "999000999",
+        "stock": 1
+    },
+    {
+        "name": "THOR Silver Hammer",
+        "image_url": "https://silverandgold.s3-ap-southeast-1.amazonaws.com/21.jpeg",
+        "price": "6660000000",
+        "stock": 1
+    }
+]
