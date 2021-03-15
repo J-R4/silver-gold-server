@@ -6,10 +6,12 @@
     "scripts": {
         "db:create:test": "NODE_ENV=test sequelize-cli db:create",
         "db:migrate:test": "NODE_ENV=test sequelize-cli db:migrate",
+        "db:seed:all:test": "NODE_ENV=test sequelize-cli db:seed:all",
         "db:create:development": "NODE_ENV=development sequelize-cli db:create",
         "db:migrate:development": "NODE_ENV=development sequelize-cli db:migrate",
+        "db:seed:all:development": "NODE_ENV=development sequelize-cli db:seed:all",
         "test": "NODE_ENV=test jest --coverage --detectOpenHandles --forceExit --runInBand",
-        "dev": "NODE_ENV=development nodemon bin/http.js"
+        "dev": "NODE_ENV=development nodemon ./bin/http.js"
     },
     "repository": {
         "type": "git",
