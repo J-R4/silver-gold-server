@@ -114,12 +114,6 @@
         "stock": 1
     },
     {
-        "name": "GOLD BAR LANDSCAPE",
-        "image_url": "https://silverandgold.s3-ap-southeast-1.amazonaws.com/20.jpeg",
-        "price": "999000999",
-        "stock": 1
-    },
-    {
         "name": "THOR Silver Hammer",
         "image_url": "https://silverandgold.s3-ap-southeast-1.amazonaws.com/21.jpeg",
         "price": "6660000000",

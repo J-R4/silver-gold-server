@@ -13,13 +13,13 @@ const errHandler = async (err, req, res, next) => {
             } else if (err.message.name === `JsonWebTokenError`) {
                 res.status(401).json({ message: `You are not Authorized` });
             } else if (err.status) {
-                req.status(err.status).json({ message: err.message });
+                res.status(err.status).json({ message: err.message });
             }
         } else {
-            req.status(500).json({ message: `internal server error` });
+            res.status(500).json({ message: `internal server error` });
         }
     } catch (err) {
-        req.status(500).json({ message: `internal server error` });
+        res.status(500).json({ message: `internal server error` });
     }
 };
 

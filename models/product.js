@@ -9,7 +9,6 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
-            Product.belongsTo(models.User);
         }
     }
     Product.init(
@@ -42,25 +41,33 @@ module.exports = (sequelize, DataTypes) => {
                     notNull: {
                         message: `Price should be reasonable`,
                     },
-                    min: {
-                        args: 0,
-                        message: `Input cannot be a minus number`,
+                    isMore(value) {
+                        if ((value) < 0) {
+                                throw {
+                                message: `input must be a positive number`
+                            }
+                        }
                     },
                     isNumeric: {
                         message: `Input can only be number`,
                     },
                 },
             },
-            stock: DataTypes.INTEGER,
-            validate: {
-                min: {
-                    args: 0,
-                    message: `Input cannot be minus number`,
-                },
-                isNumeric: {
-                    message: `Input can only be number`,
-                },
-            },
+            stock: {
+                type: DataTypes.INTEGER,
+                validate: {
+                    isMore(value) {
+                        if ((value) < 0) {
+                                throw {
+                                message: `input must be a positive number`
+                            }
+                        }
+                    },
+                    isNumeric: {
+                        message: `Input can only be number`,
+                    },
+                }
+            }
         },
         {
             sequelize,

@@ -18,9 +18,10 @@ router.use(authenticate);
 
 //ProductController
 router.get('/products', ProductController.products);
-router.post('/products', ProductController.postProduct);
 
 router.use(authorize);
+
+router.post('/products', ProductController.postProduct);
 
 router.get('/products/:id', ProductController.getOne);
 router.put('/products/:id', ProductController.put);

@@ -4,7 +4,7 @@ class ProductController {
     static products = async (req, res, next) => {
         try {
             let product = await Product.findAll();
-            if (!product) {
+            if (product === undefined) {
                 throw {
                     status: 404,
                     message: `Not Found`,
@@ -20,9 +20,10 @@ class ProductController {
         try {
             let data = req.body;
             let obj = {
-                title: data.title,
-                category: data.category,
-                UserId: req.currentUser.id,
+                name: data.name,
+                image_url: data.image_url,
+                price: data.price,
+                stock: data.stock
             };
             let theData = await Product.create(obj);
 
@@ -61,8 +62,10 @@ class ProductController {
             let target = +req.params.id;
             let data = req.body;
             let obj = {
-                title: data.title,
-                category: data.category,
+                name: data.name,
+                image_url: data.image_url,
+                price: data.price,
+                stock: data.stock
             };
 
             let product = await Product.findByPk(target);
@@ -94,7 +97,7 @@ class ProductController {
     static patch = async (req, res, next) => {
         try {
             let target = +req.params.id;
-            let data = { category: req.body.category };
+            let data = { price: req.body.price, stock: req.body.stock };
             let product = await Product.findByPk(target);
 
             if (!product) {

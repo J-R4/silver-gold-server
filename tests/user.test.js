@@ -1,14 +1,13 @@
 const request = require('supertest');
-const express = require('express');
-// const app = require('../app.js');
-const app = express();
+const app = require('../app.js');
 
 describe('testing POST /login', function () {
-    it('should return response with status code 200', function () {
+    it('should return response with status code 200', function (done) {
         // setup
         const body = {
             email: 'admin@email.com',
-            password: 123456,
+            password: '123456',
+            role: `admin`
         };
         // execute
         request(app)
@@ -16,12 +15,14 @@ describe('testing POST /login', function () {
             .send(body)
             .end(function (err, res) {
                 if (err) {
-                    document(err);
+                    done(err);
                 } else {
                     // assert
-                    expect(res.status(status).toEqual(200));
-                    expect(res.message(message).toEqual(`Validation Error`));
-                    expect(res.detail(detail).toEqual(`email / password is wrong`));
+                    let access_token = res.body.access_token
+                    expect(res.statusCode).toEqual(200);
+                    expect(res.body).toHaveProperty('access_token');
+                    expect(typeof res.body).toBe(`object`);
+                    expect(typeof access_token).toBe(`string`);
 
                     done();
                 }
