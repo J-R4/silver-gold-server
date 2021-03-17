@@ -1,0 +1,27 @@
+[
+    {
+        "title": "Banner 1",
+        "status": "inactive",
+        "image_url": "https://silverandgold.s3-ap-southeast-1.amazonaws.com/banner/b1.png"
+    },
+    {
+        "title": "Banner 2",
+        "status": "inactive",
+        "image_url": "https://silverandgold.s3-ap-southeast-1.amazonaws.com/banner/b2.jpg"
+    },
+    {
+        "title": "Banner 3",
+        "status": "inactive",
+        "image_url": "https://silverandgold.s3-ap-southeast-1.amazonaws.com/banner/b3.jpg"
+    },
+    {
+        "title": "Banner 4",
+        "status": "inactive",
+        "image_url": "https://silverandgold.s3-ap-southeast-1.amazonaws.com/banner/b4.jpg"
+    },
+    {
+        "title": "Banner 5",
+        "status": "inactive",
+        "image_url": "https://silverandgold.s3-ap-southeast-1.amazonaws.com/banner/b5.jpg"
+    }
+]

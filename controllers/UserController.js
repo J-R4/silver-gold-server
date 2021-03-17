@@ -35,7 +35,6 @@ class UserController {
                     email: theEmail,
                 },
             });
-
             let data = {
                 id: theUser.id,
                 email: theUser.email,
