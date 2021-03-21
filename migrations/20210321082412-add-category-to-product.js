@@ -2,6 +2,11 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
+    await queryInterface.addColumn('Products', 'category',{
+      type: Sequelize.TEXT,
+      onUpdate: 'cascade',
+      onDelete: 'cascade'
+    })
     /**
      * Add altering commands here.
      *
@@ -11,6 +16,7 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
+    await queryInterface.removeColumn('Products', 'category',{})
     /**
      * Add reverting commands here.
      *

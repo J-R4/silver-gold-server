@@ -73,6 +73,11 @@ module.exports = (sequelize, DataTypes) => {
             sequelize,
             modelName: 'Product',
         }
-    );
+    ),
+        Product.addHook('afterCreate', (prd, opt) => {
+            if (!prd.category) {
+                prd.category = 'etc'
+            }
+        })
     return Product;
 };

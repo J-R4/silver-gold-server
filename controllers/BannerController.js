@@ -1,32 +1,30 @@
-const { Product } = require('../models/index.js');
+const { Banner } = require('../models/index.js');
 
-class ProductController {
-    static products = async (req, res, next) => {
+class BannerController {
+    static banners = async (req, res, next) => {
         try {
-            let product = await Product.findAll();
-            if (product === undefined) {
+            let banner = await Banner.findAll();
+            if (banner === undefined) {
                 throw {
                     status: 404,
                     message: `Not Found`,
                 };
             }
-            res.status(200).json({ product });
+            res.status(200).json({ banner });
         } catch (err) {
             next(err);
         }
     };
 
-    static postProduct = async (req, res, next) => {
+    static postBanner = async (req, res, next) => {
         try {
             let data = req.body;
             let obj = {
-                name: data.name,
+                title: data.title,
                 image_url: data.image_url,
-                price: data.price,
-                stock: data.stock,
-                category: data.category
+                status: data.status
             };
-            let theData = await Product.create(obj);
+            let theData = await Banner.create(obj);
 
             if (!theData) {
                 throw {
@@ -44,15 +42,15 @@ class ProductController {
     static getOne = async (req, res, next) => {
         try {
             let target = +req.params.id;
-            let theProduct = await Product.findByPk(target);
+            let theBanner = await Banner.findByPk(target);
 
-            if (!theProduct) {
+            if (!theBanner) {
                 throw {
                     status: 404,
-                    message: `cannot find the id / product`,
+                    message: `cannot find the id / Banner`,
                 };
             }
-            res.status(200).json({ theProduct });
+            res.status(200).json({ theBanner });
         } catch (err) {
             next(err);
         }
@@ -63,23 +61,21 @@ class ProductController {
             let target = +req.params.id;
             let data = req.body;
             let obj = {
-                name: data.name,
+                title: data.title,
                 image_url: data.image_url,
-                price: data.price,
-                stock: data.stock,
-                category: data.category
+                status: data.status
             };
 
-            let product = await Product.findByPk(target);
+            let banner = await Banner.findByPk(target);
 
-            if (!product) {
+            if (!banner) {
                 throw {
                     status: 404,
                     message: `data not found`,
                 };
             }
 
-            let update = await Product.update(obj, {
+            let update = await Banner.update(obj, {
                 where: { id: target },
                 returning: true,
             });
@@ -100,16 +96,16 @@ class ProductController {
         try {
             let target = +req.params.id;
             let data = { price: req.body.price, stock: req.body.stock };
-            let product = await Product.findByPk(target);
+            let banner = await Banner.findByPk(target);
 
-            if (!product) {
+            if (!banner) {
                 throw {
                     status: 404,
                     message: `data not found`,
                 };
             }
 
-            let update = await Product.update(data, {
+            let update = await Banner.update(data, {
                 where: {
                     id: target,
                 },
@@ -133,45 +129,25 @@ class ProductController {
         try {
             let target = +req.params.id;
 
-            let product = await Product.findByPk(target);
+            let banner = await Banner.findByPk(target);
 
-            if (!product) {
+            if (!banner) {
                 throw {
                     status: 404,
                     message: `data not found`,
                 };
             }
 
-            let begone = await Product.destroy({
+            let begone = await Banner.destroy({
                 where: {
                     id: target,
                 },
             });
-            res.status(200).json({ message: `Product with id ${target} has been deleted` });
-        } catch (err) {
-            next(err);
-        }
-    };
-
-    static productsByCategory = async (req, res, next) => {
-        try {
-            let category = req.body.category
-            let sort = await Product.findAll({
-                where: {
-                    category
-                }
-            });
-            if (sort === undefined) {
-                throw {
-                    status: 404,
-                    message: `Not Found`,
-                };
-            }
-            res.status(200).json({ sort });
+            res.status(200).json({ message: `Banner with id ${target} has been deleted` });
         } catch (err) {
             next(err);
         }
     };
 }
 
-module.exports = ProductController;
+module.exports = BannerController;
