@@ -1,4 +1,4 @@
-const { Product } = require('../models/index.js');
+const { Product, Category } = require('../models/index.js');
 
 class ProductController {
     static products = async (req, res, next) => {
@@ -153,12 +153,27 @@ class ProductController {
         }
     };
 
+    static showCategories = async (req, res, next) => {
+        try {
+            let categories = await Category.findAll();
+            if (categories === undefined) {
+                throw {
+                    status: 404,
+                    message: `Not Found`,
+                };
+            }
+            res.status(200).json({ categories });
+        } catch (err) {
+            next(err);
+        }
+    };
+
     static productsByCategory = async (req, res, next) => {
         try {
-            let category = req.body.category
+            const CategoryId = req.body.category
             let sort = await Product.findAll({
                 where: {
-                    category
+                    CategoryId
                 }
             });
             if (sort === undefined) {

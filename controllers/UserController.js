@@ -10,8 +10,9 @@ class UserController {
     static register = async (req, res, next) => {
         try {
             let theEmail = req.body.email;
+            let theName = req.body.name;
             let thePassword = req.body.password;
-            let user = await User.create({ email: theEmail, password: thePassword });
+            let user = await User.create({ email: theEmail, name: theName, password: thePassword });
             if (!user) {
                 throw {
                     status: 400,
@@ -37,6 +38,7 @@ class UserController {
             });
             let data = {
                 id: theUser.id,
+                name: theUser.name,
                 email: theUser.email,
                 role: theUser.role,
             };
@@ -72,6 +74,7 @@ class UserController {
                     email: googleUserParams.email,
                 },
                 defaults: {
+                    name: `Google User`,
                     email: googleUserParams.email,
                     password: new Date().toDateString() + googleUserParams.email,
                 },

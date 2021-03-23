@@ -9,6 +9,10 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
+            Product.belongsTo(models.Category)
+            Product.belongsToMany(models.User, { through: 'Carts' })
+            Product.belongsToMany(models.User, { through: 'Wishlists' })
+            Product.belongsToMany(models.User, { through: 'Transactions' })
         }
     }
     Product.init(
@@ -43,13 +47,13 @@ module.exports = (sequelize, DataTypes) => {
                     },
                     isMore(value) {
                         if ((value) < 0) {
-                                throw {
+                            throw {
                                 message: `input must be a positive number`
                             }
                         }
                     },
                     isNumeric: {
-                        message: `Input can only be number`,
+                        message: `Input must be in number`,
                     },
                 },
             },
@@ -58,13 +62,13 @@ module.exports = (sequelize, DataTypes) => {
                 validate: {
                     isMore(value) {
                         if ((value) < 0) {
-                                throw {
+                            throw {
                                 message: `input must be a positive number`
                             }
                         }
                     },
                     isNumeric: {
-                        message: `Input can only be number`,
+                        message: `Input must be in number`,
                     },
                 }
             }
@@ -73,11 +77,6 @@ module.exports = (sequelize, DataTypes) => {
             sequelize,
             modelName: 'Product',
         }
-    ),
-        Product.addHook('afterCreate', (prd, opt) => {
-            if (!prd.category) {
-                prd.category = 'etc'
-            }
-        })
+    )
     return Product;
 };

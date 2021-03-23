@@ -10,10 +10,22 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
+            User.belongsToMany(models.Product, { through: 'Carts' })
+            User.belongsToMany(models.Product, { through: 'Wishlists' })
+            User.belongsToMany(models.Product, {through: 'Transactions'})
         }
     }
     User.init(
         {
+            name: {
+                type: DataTypes.STRING,
+                allowNull: false,
+                validate: {
+                    notEmpty: {
+                        message: `Name cannot be empty`,
+                    },
+                },
+            },
             email: {
                 type: DataTypes.STRING,
                 allowNull: false,

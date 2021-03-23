@@ -10,6 +10,7 @@ module.exports = {
             'Users',
             [
                 {
+                    name: `admin`,
                     email: `admin@email.com`,
                     password,
                     role: `admin`,
