@@ -9,17 +9,14 @@ const { OAuth2Client } = require('google-auth-library');
 class UserController {
     static register = async (req, res, next) => {
         try {
-            let theEmail = req.body.email;
-            let theName = req.body.name;
-            let thePassword = req.body.password;
-            let user = await User.create({ email: theEmail, name: theName, password: thePassword });
+            const { email, name, password } = req.body
+            let user = await User.create({ email, name, password });
             if (!user) {
                 throw {
                     status: 400,
                     message: `Bad Request`,
                 };
             }
-
             res.status(201).json({ id: user.id, email: user.email });
         } catch (err) {
             next(err);
@@ -54,12 +51,52 @@ class UserController {
                 };
             }
         } catch (err) {
-            console.log(err);
+            next(err);
+        }
+    };
+
+    static profile = async (req, res, next) => {
+        try {
+            let theUser = await User.findOne({
+                where: {
+                    id: req.currentUser.id,
+                },
+            });
+            if (theUser) {
+                res.status(200).json({ theUser });
+            } else {
+                throw {
+                    status: 404,
+                    message: 'User not found',
+                };
+            }
+        } catch (err) {
+            next(err);
+        }
+    };
+
+    static delete = async (req, res, next) => {
+        try {
+            let theUser = await User.destroy({
+                where: {
+                    id: req.currentUser.id,
+                },
+            });
+            if (theUser) {
+                res.status(200).json({ message: `The user has been deleted` });
+            } else {
+                throw {
+                    status: 404,
+                    message: 'User not found',
+                };
+            }
+        } catch (err) {
             next(err);
         }
     };
 
     static loginGoogle = (req, res, next) => {
+        console.log('masuk google yey')
         const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
         async function verify() {
             const ticket = await client.verifyIdToken({

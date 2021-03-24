@@ -53,12 +53,6 @@ module.exports = (sequelize, DataTypes) => {
             },
             role: {
                 type: DataTypes.STRING,
-                allowNull: false,
-                validate: {
-                    notEmpty: {
-                        message: `Role cannot be empty`,
-                    },
-                },
             },
         },
         {

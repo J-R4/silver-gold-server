@@ -24,19 +24,10 @@ class CartController {
         try {
             let {ProductId, quantity} = req.body;
             let obj = {
-                UserId: req.currentUser,
+                quantity,
+                UserId: req.currentUser.id,
                 ProductId,
-                quantity
             };
-
-            let product = await Product.findByPk(ProductId)
-
-            if (quantity > product.stock) {
-                throw ({
-                    status: 400,
-                    message: `The Quantity cannot be higher than the stock`
-                })
-            }
 
             let cart = await Cart.create(obj);
 

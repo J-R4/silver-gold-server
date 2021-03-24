@@ -1,9 +1,16 @@
 const { Product, Category } = require('../models/index.js');
+const { Op } = require("sequelize");
 
 class ProductController {
     static products = async (req, res, next) => {
         try {
-            let product = await Product.findAll();
+            let product = await Product.findAll({
+                where: {
+                    stock: {
+                        [Op.gte]: 0, 
+                    }
+                }
+            });
             if (product === undefined) {
                 throw {
                     status: 404,

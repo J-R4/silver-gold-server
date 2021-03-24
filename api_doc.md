@@ -31,6 +31,8 @@ ENDPOINT:
 29. `POST /oAuth/`
 30. `GET /categories`
 31. `GET /sort`
+32. `GET /profile`
+33. `DELETE /profile`
 
 ## 1. `POST /login`
 
@@ -1542,5 +1544,93 @@ Response (500 - Internal Server Error)
 ```json
 {
     "message": "<internal server Error message>"
+}
+```
+
+## 32. `GET /profile`
+
+Description =
+
+User can get products by the id (+req.params.id)
+
+Request =
+
+-   headers =
+
+    {
+    "access_token": "<access token>"
+    }
+
+-   body =
+
+    not needed
+
+Response (200 - OK ) =
+
+```json
+{
+    "id": "<given id by system>",
+    "name": "<product name>",
+    "image_url": "<image url>",
+    "price": "<price>",
+    "stock": "<stock>",
+    "createdAt": "<date by system>",
+    "updatedAt": "<date by system>"
+}
+```
+
+Response (404 - NOT FOUND) =
+
+```json
+{
+    "message": "<not found message>"
+}
+```
+
+Response (500 - INTERNAL SERVER ERROR) =
+
+```json
+{
+    "message": "<internal server message>"
+}
+```
+
+## 33. `DELETE /profile`
+
+Description =
+
+User can delete the products by their selection according to its id
+
+Request =
+
+-   header =
+    {
+    "access_token": "<access token>"
+    }
+
+-   body =
+    not needed
+
+Response (200 - OK) =
+
+```json
+{
+    "message": "<delete message>"
+}
+```
+
+Response (404 - NOT FOUND) =
+
+```json
+{
+    "message": "<not found message>"
+}
+```
+
+response (500 - INTERNAL SERVER ERROR) =
+
+```json
+{
+    "message": "<internal server error message>"
 }
 ```

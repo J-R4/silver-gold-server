@@ -35,15 +35,6 @@ module.exports = (sequelize, DataTypes) => {
           message: `The id cannot be empty`
         }
       }
-    },
-    WishlistId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        notNull: {
-          message: `The id cannot be empty`
-        }
-      }
     }
   }, {
     sequelize,

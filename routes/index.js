@@ -22,6 +22,9 @@ router.post('/register', UserController.register);
 router.use(authenticate);
 
 //The APP
+router.get('/profile', UserController.profile);
+router.delete('/profile', UserController.delete);
+
 router.get('/products', ProductController.products);
 router.post('/products', ProductController.postProduct);
 
