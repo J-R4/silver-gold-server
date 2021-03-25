@@ -7,7 +7,7 @@ class ProductController {
             let product = await Product.findAll({
                 where: {
                     stock: {
-                        [Op.gte]: 0, 
+                        [Op.gte]: 1, 
                     }
                 }
             });

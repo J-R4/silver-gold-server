@@ -29,17 +29,29 @@ class CartController {
                 ProductId,
             };
 
-            let cart = await Cart.create(obj);
-
-            if (!cart) {
-                throw {
-                    status: 400,
-                    message: `Bad Request`,
-                };
+            let find = await Cart.findOne({ where: { ProductId } })
+            
+            if (find) {
+                let add = await Cart.update(obj, {
+                where: { id: find.id },
+                returning: true,
+                });
+                
+                res.status(200).json({ add });
+            } else {
+                let cart = await Cart.create(obj);
+                console.log(cart,'ini cart')
+                if (!cart) {
+                    throw {
+                        status: 400,
+                        message: `Bad Request`,
+                    };
+                }
+    
+                res.status(201).json({ cart });
             }
-
-            res.status(201).json({ cart });
         } catch (err) {
+            console.log(err)
             next(err);
         }
     };

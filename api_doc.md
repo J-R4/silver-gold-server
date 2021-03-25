@@ -81,7 +81,7 @@ Response (500 - Internal Server Error)
 ## 2. `POST /register`
 
 Description =
-new User can register with unique email and their password
+new User can register with their name, unique email and their password
 
 Request =
 
@@ -92,6 +92,7 @@ Request =
 
     ```json
     {
+        "name": "<name - string>",
         "email": "<email - string>",
         "password": "<password - string>"
     }
@@ -449,14 +450,13 @@ Response (200 - OK) =
 
 ```json
 {
-    "id": "<given id by system>",
-    "name": "<product name>",
-    "image_url": "<image url>",
-    "price": "<price>",
-    "stock": "<stock>",
-    "createdAt": "<date by system>",
-    "updatedAt": "<date by system>"
-}
+      "id": 1,
+      "title": "Banner 1",
+      "status": "inactive",
+      "image_url": "https://silverandgold.s3-ap-southeast-1.amazonaws.com/banner/b1.png",
+      "createdAt": "2021-03-23T19:24:50.203Z",
+      "updatedAt": "2021-03-23T19:24:50.203Z"
+},
 ```
 
 Response (404 - NOT FOUND) =
@@ -479,7 +479,7 @@ Response (500 - Internal Server Error)
 
 Description =
 
-User can create their own todo
+Admin can create their own banner
 
 Request =
 

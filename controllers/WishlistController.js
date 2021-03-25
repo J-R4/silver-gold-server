@@ -24,20 +24,29 @@ class WishlistController {
         try {
             let {ProductId} = req.body;
             let obj = {
-                UserId: req.currentUser,
+                UserId: req.currentUser.id,
                 ProductId,
             };
 
-            let wish = await Wishlist.create(obj);
-
-            if (!wish) {
-                throw {
-                    status: 400,
-                    message: `Bad Request`,
-                };
+            let find = await Wishlist.findOne({ where: { ProductId } })
+            
+            if (find) {
+                let begone = await Wishlist.destroy({
+                where: { id: find.id }
+                });
+                
+                res.status(200).json({ begone });
+            } else {
+                let wish = await Wishlist.create(obj);
+                if (!wish) {
+                    throw {
+                        status: 400,
+                        message: `Bad Request`,
+                    };
+                }
+    
+                res.status(201).json({ wish });
             }
-
-            res.status(201).json({ wish });
         } catch (err) {
             next(err);
         }
