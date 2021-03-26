@@ -30,6 +30,7 @@ const authenticate = async (req, res, next) => {
 
 const authorizeP = async (req, res, next) => {
     try {
+        console.log(req.headers.access_token, '<<<<<<<<<< header')
         if (req.headers.access_token === undefined) {
             throw {
                 status: 401,
@@ -46,7 +47,6 @@ const authorizeP = async (req, res, next) => {
         }
 
         let target = +req.params.id;
-
         let product = await Product.findByPk(target);
 
         if (product) {
@@ -80,7 +80,6 @@ const authorizeB = async (req, res, next) => {
         }
 
         let target = +req.params.id;
-
         let banner = await Banner.findByPk(target);
 
         if (banner) {
