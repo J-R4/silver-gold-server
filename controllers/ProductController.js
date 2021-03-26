@@ -177,10 +177,10 @@ class ProductController {
 
     static productsByCategory = async (req, res, next) => {
         try {
-            const CategoryId = req.body.category
+            const { catId } = req.body
             let sort = await Product.findAll({
                 where: {
-                    CategoryId
+                    CategoryId: catId
                 }
             });
             if (sort === undefined) {
