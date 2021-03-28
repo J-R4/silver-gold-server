@@ -18,6 +18,6 @@ app.use('/', router);
 
 app.use(errHandler);
 
-app.listen(port, () => console.log(`S&G admin app is listening on port http://localhost:`+port));
+// app.listen(port, () => console.log(`S&G admin app is listening on port http://localhost:`+port));
 
 module.exports = app;
