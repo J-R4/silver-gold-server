@@ -106,7 +106,7 @@ class ProductController {
     static patch = async (req, res, next) => {
         try {
             let target = +req.params.id;
-            let data = { price: req.body.price, stock: req.body.stock };
+            let data = { stock: req.body.stock };
             let product = await Product.findByPk(target);
 
             if (!product) {

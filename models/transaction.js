@@ -34,19 +34,22 @@ module.exports = (sequelize, DataTypes) => {
     },
     date: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: {
-          message: `Date cannot be empty`
-        }
-      }
     }
   }, {
     sequelize,
     modelName: 'Transaction',
   }),
     Transaction.addHook('beforeCreate', (tr, opt) => {
-      tr.date = new Date().toLocaleString
+      const dtf = new Intl.DateTimeFormat(this.locale, {
+                year: 'numeric',
+                month: 'numeric',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: 'numeric',
+                second: this.enableSeconds ? 'numeric' : undefined,
+                timezone: 'UTC'
+            })
+      tr.date = dtf.format(new Date())
     })
   return Transaction;
 };

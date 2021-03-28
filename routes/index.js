@@ -7,7 +7,7 @@ const TransController = require('../controllers/TransController.js');
 const WishlistController = require('../controllers/WishlistController.js');
 
 
-const { authenticate, authorizeP, authorizeB, authorizeC, authorizeT, authorizeW } = require('../middlewares/auth.js');
+const { authenticate, authorizeP, authorizeB, authorizeC, authorizeT, authorizeW, authorizePCustomer } = require('../middlewares/auth.js');
 
 router.get('/', (req, res) => {
     res.send('welcome to silver&gold app good people !');
@@ -43,10 +43,11 @@ router.post('/wish', WishlistController.postWish);
 router.get('/categories', ProductController.showCategories);
 router.get('/sort', ProductController.productsByCategory);
 
+router.patch('/products/:id', authorizePCustomer, ProductController.patch);
+
 //Product Controller
 router.get('/products/:id', authorizeP, ProductController.getOne);
 router.put('/products/:id', authorizeP, ProductController.put);
-router.patch('/products/:id', authorizeP, ProductController.patch);
 router.delete('/products/:id', authorizeP, ProductController.delete);
 
 //Banner Controller

@@ -25,9 +25,10 @@ class TransController {
             let { ProductId } = req.body;
             
             let obj = {
-                UserId: req.currentUser,
+                UserId: req.currentUser.id,
                 ProductId
             };
+            console.log(obj,'masuk postTrans<<<<<<<<<<<')
 
             let transaction = await Transaction.create(obj);
 
